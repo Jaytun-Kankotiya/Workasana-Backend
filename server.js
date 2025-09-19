@@ -7,6 +7,7 @@ import authRouter from './routes/authRoute.js'
 import cookieParser from 'cookie-parser'
 import transporter from './config/nodemailer.js'
 import nodemailer from 'nodemailer'
+import projectRouter from "./routes/projectRoute.js";
 
 
 
@@ -27,6 +28,8 @@ await initialization()
 
 
 app.use('/v1/auth', authRouter)
+
+app.use('/v1/projects', projectRouter)
 
 
 
