@@ -5,9 +5,10 @@ import cors from 'cors'
 import { initialization } from './config/db.connect.js'
 import authRouter from './routes/authRoute.js'
 import cookieParser from 'cookie-parser'
-import transporter from './config/nodemailer.js'
-import nodemailer from 'nodemailer'
 import projectRouter from "./routes/projectRoute.js";
+import teamRouter from "./routes/teamRoute.js";
+import tagRouter from "./routes/tagRoute.js";
+import taskRouter from "./routes/taskRoute.js";
 
 
 
@@ -30,6 +31,13 @@ await initialization()
 app.use('/v1/auth', authRouter)
 
 app.use('/v1/projects', projectRouter)
+
+app.use('/v1/teams', teamRouter)
+
+app.use('/v1/tags', tagRouter)
+
+app.use('/v1/tasks', taskRouter)
+
 
 
 

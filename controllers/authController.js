@@ -148,7 +148,7 @@ export const sendVerificationOtp = async (req, res) => {
 
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     user.verifyOtp = otp;
-    user.verifyOtpExpireAt = Date.now() + 30  * 60 * 1000;
+    user.verifyOtpExpireAt = Date.now() + 10  * 60 * 1000;
 
     await user.save();
 
@@ -168,7 +168,7 @@ export const sendVerificationOtp = async (req, res) => {
         </span>
       </div>
       <p style="font-size: 14px; color: #555555; line-height: 1.5;">
-        This OTP is valid for <strong>30 Minutes</strong>. Please do not share it with anyone.
+        This OTP is valid for <strong>10 Minutes</strong>. Please do not share it with anyone.
       </p>
       <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0;">
       <p style="font-size: 12px; color: #777777; text-align: center;">
@@ -409,5 +409,20 @@ export const resetPassword = async (req, res) => {
     return res.json({success: true, message: "Password has been reset successfully. Please Login to your account"})
   } catch (error) {
     return res.json({success: false, message: error.message})
+  }
+}
+
+
+export const fetchAllUser = async (req, res) => {
+  try {
+    const users = await userModel.find({}, "name _id")
+
+    if(!users || users.length === 0){
+      return res.status(400).json({success: false, message: "Users not found"})
+    }
+
+    return res.status(200).json({success: true, message: "Users Fetched Successfully", data: users})
+  } catch (error) {
+    return res.status(500).json({success: false, message: error.message})
   }
 }
