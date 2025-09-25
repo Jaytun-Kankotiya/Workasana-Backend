@@ -8,7 +8,9 @@ import userModel from "../models/userModel.js"
 const statusList = ["To Do", "In Progress", "Completed", "Blocked"]
 
 export const addNewTask = async (req, res) => {
-    const { name, project, team, owners, tags, timeToComplete, status} = req.body
+    let { name, project, team, owners, tags, timeToComplete, status} = req.body
+
+    timeToComplete = Number(timeToComplete);
 
     if(!name){
         return res.status(404).json({success: false, message: "Invalid Input: Name is required"})
@@ -30,7 +32,7 @@ export const addNewTask = async (req, res) => {
         return res.status(404).json({success: false, message: "Invalid Input: Tag is required"})
     }
 
-    if(!timeToComplete || typeof timeToComplete !== "number"){
+    if(!timeToComplete || isNaN(timeToComplete)){
         return res.status(404).json({success: false, message: "Invalid Input: Time to compelete is required"})
     }
 
@@ -42,7 +44,7 @@ export const addNewTask = async (req, res) => {
 
         const projectDoc = await projectModel.findOne({name: project})
         if(!projectDoc){
-            return res.status(404).json({status: false, message: "Project not found"})
+            return res.status(404).json({success: false, message: "Project not found"})
         }
 
         const teamDoc = await teamModel.findOne({name: team})
