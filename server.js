@@ -9,6 +9,7 @@ import projectRouter from "./routes/projectRoute.js";
 import teamRouter from "./routes/teamRoute.js";
 import tagRouter from "./routes/tagRoute.js";
 import taskRouter from "./routes/taskRoute.js";
+import userRouter from "./routes/userRoute.js";
 
 
 
@@ -37,6 +38,8 @@ app.use('/v1/teams', teamRouter)
 app.use('/v1/tags', tagRouter)
 
 app.use('/v1/tasks', taskRouter)
+
+app.use('/v1/user', userRouter)
 
 
 

@@ -10,9 +10,9 @@ authRouter.post('/login', login)
 authRouter.post('/logout', logout)
 authRouter.post('/send-verify-otp', userAuth, sendVerificationOtp)
 authRouter.post('/verify-acoount',userAuth, verifyEmailOtp)
-authRouter.post('/send-reset-otp',userAuth, sendResetPasswordOtp)
-authRouter.post('/verify-reset-otp',userAuth, verifyResetOtp)
-authRouter.post('/reset-password',userAuth, resetPassword)
+authRouter.post('/send-reset-otp', sendResetPasswordOtp)
+authRouter.post('/verify-reset-otp', verifyResetOtp)
+authRouter.post('/reset-password', resetPassword)
 authRouter.get('/users',userAuth, fetchAllUser)
 
 

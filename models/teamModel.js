@@ -6,9 +6,7 @@ const teamSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    description: {
-        type: String
-    }
+    members: [String]
 })
 
 const teamModel = mongoose.model('Team', teamSchema)

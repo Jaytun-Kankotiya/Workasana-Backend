@@ -203,3 +203,21 @@ export const deleteTask = async (req, res) => {
         return res.status(500).json({success: false, message: error.message})
     }
 }
+
+export const fetchTaskById = async (req, res) => {
+    const {id} = req.params
+    if(!id){
+        return res.status(400).json({success: false, message: "Task Id Not Found"})
+    }
+
+    try {
+        const task = await taskModel.findById(id).populate('project', '_id name').populate('owners', 'name').populate('team', 'name members')
+        console.log(task)
+        if(!task){
+            return res.status(404).json({success: false, message: "Task Not Found"})
+        }
+        return res.status(200).json({success: true, message: "Task Fetch Successfully", data: task})
+    } catch (error) {
+        return res.status(500).json({success: false, message: error.message})
+    }
+}

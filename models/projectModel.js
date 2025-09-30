@@ -19,7 +19,7 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-})
+}, {timestamps: true})
 
 const projectModel = mongoose.model("Project", projectSchema)
 

@@ -57,3 +57,32 @@ export const fetchProjectById = async (req, res) => {
         return res.status(500).json({success: false, message: error.message})
     }
 }
+
+export const updateProject = async (req, res) => {
+    const {id} = req.params
+    const {name, description, status} = req.body
+    if(!id){
+        return res.status(404).json({success: false, message: "Project Not Found"})
+    }
+    try {
+        const updateFields = {}
+        if(name){
+            updateFields.name = name
+        }
+        if(description){
+            updateFields.description = description
+        }
+        if(status){
+            updateFields.status = status
+        }
+
+
+        const updatedProject = await projectModel.findByIdAndUpdate(id, {$set: updateFields}, {new: true})
+        if(!updatedProject){
+            return res.status(404).json({success: false, message: "Project Not Found"})
+        }
+        return res.status(200).json({success: true, message: "Project Data Updated Successfully", data: updateFields})
+    } catch (error) {
+        return res.status(500).json({success: false, message: error.message})
+    }
+}
