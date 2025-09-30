@@ -17,7 +17,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
-const allowedOrigins = ['http://localhost:5173', 'https://workasana-backend-olive.vercel.app']
+const allowedOrigins = ['http://localhost:5173', 'https://workasana-frontend-prfj.vercel.app']
 
 const corsOptions = {
     origin: allowedOrigins,
