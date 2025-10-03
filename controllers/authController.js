@@ -29,8 +29,7 @@ export const register = async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(password, 10);
-    const user = new userModel({ name, email, password: hashPassword });
-    await user.save();
+    const user = new userModel({ name, email, password: hashPassword })
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
@@ -40,7 +39,7 @@ export const register = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 24 * 60 * 60 * 1000,
     });
 
     const mailOptions = {
@@ -65,6 +64,7 @@ export const register = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
+    await user.save();
     return res.json({
       success: true,
       message: "User registered successfully",
