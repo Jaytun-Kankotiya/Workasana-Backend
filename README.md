@@ -117,7 +117,6 @@ Sample Response:</br>
   "status": "In Progress",
   "timeToComplete": "10"
 }
-
 ```
 
 ### **GET /v1/tasks**</br>
@@ -180,7 +179,6 @@ Sample Response:</br>
   "name": "UI/UX Team",
   "members": ["Jason Thomson", "Gretchen Johnson", "Jack Patel"]
 }
-
 ```
 
 ### **GET /v1/teams**</br>
@@ -196,7 +194,6 @@ Sample Response:</br>
     "members": ["Jason Thomson", "Gretchen Johnson", "Jack Patel"]
   }
 ]
-
 ```
 
 ---
