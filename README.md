@@ -179,7 +179,6 @@ Sample Response:</br>
   "name": "UI/UX Team",
   "members": ["Jason Thomson", "Gretchen Johnson", "Jack Patel"]
 }
-
 ```
 
 ### **GET /v1/teams**</br>
@@ -195,7 +194,6 @@ Sample Response:</br>
     "members": ["Jason Thomson", "Gretchen Johnson", "Jack Patel"]
   }
 ]
-
 ```
 
 ---
