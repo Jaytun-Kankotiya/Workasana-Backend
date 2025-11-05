@@ -117,7 +117,6 @@ Sample Response:</br>
   "status": "In Progress",
   "timeToComplete": "10"
 }
-
 ```
 
 ### **GET /v1/tasks**</br>
